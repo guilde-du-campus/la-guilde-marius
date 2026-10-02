@@ -1,0 +1,101 @@
+/* La carte d'une quête. Les couleurs viennent des design tokens
+   (src/styles/tokens.css) : jamais de couleur en dur dans un composant. */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.25rem;
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+/* Une quête qui n'est plus disponible s'estompe : l'information passe
+   aussi par le visuel, pas seulement par le libellé. */
+.card[data-status="VALIDATED"],
+.card[data-status="CANCELLED"] {
+  opacity: 0.55;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+}
+
+.type {
+  color: var(--color-accent-strong);
+  font-weight: 600;
+}
+
+.status {
+  color: var(--color-text-muted);
+}
+
+.title {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.description {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  /* Trois lignes maximum : la fiche complète vit sur la page de détail. */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.75rem;
+  align-items: center;
+  margin-top: auto;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.reward {
+  color: var(--color-accent-strong);
+  font-weight: 700;
+}
+
+.category {
+  margin-left: auto;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-sm);
+  background: var(--color-background);
+}
+
+.titleLink {
+  color: inherit;
+  text-decoration: none;
+}
+
+.titleLink:hover,
+.titleLink:focus-visible {
+  color: var(--color-accent-strong);
+}
+
+/* Bonus du TP4 de la séance 1 · le pseudo du preneur, discret : l'information sans le bruit. */
+.taker {
+  font-style: italic;
+}
+
+/* La photo de quête : la place est réservée (ratio fixe), la page ne
+   saute pas quand l'image arrive. */
+.photo {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  margin: -1.25rem -1.25rem 0;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  overflow: hidden;
+}
+
+.photoImg {
+  object-fit: cover;
+}

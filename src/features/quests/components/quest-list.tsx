@@ -1,4 +1,6 @@
 import { Quest } from '@/features/quests/types';
+import { QuestCard } from './quest-card';
+import styles from '../styles/quest-card-list.module.css';
 
 interface QuestListProps {
   quests: Quest[];
@@ -6,10 +8,10 @@ interface QuestListProps {
 
 export default function QuestList({ quests }: QuestListProps) {
   return (
-    <ul>
+    <div className={styles.grid}>
       {quests.map((quest) => (
-        <li key={quest.id}>{quest.title}</li>
+        <QuestCard key={quest.id} quest={quest} />
       ))}
-    </ul>
+    </div>
   );
 }
