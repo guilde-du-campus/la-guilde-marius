@@ -11,8 +11,8 @@ import styles from './page.module.css';
 import QuestList from '@/features/quests/components/quest-list';
 
 // Pourquoi cette ligne ? Réponse en séance 2.
-// export const dynamic = 'force-dynamic';
-export const revalidate = 30;
+export const dynamic = 'force-dynamic';
+// export const revalidate = 30;
 
 export default async function HomePage() {
   // Le tableau est public : pas de jeton nécessaire pour cette page.

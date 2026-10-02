@@ -1,0 +1,54 @@
+/* =============================================================================
+ Le squelette de chargement du tableau des quêtes · TD2 de la séance 2
+ -----------------------------------------------------------------------------
+ Importé depuis loading.tsx. Trois cartes grises aux dimensions d'une
+ carte de quête : la place est réservée, la page ne saute pas quand le
+ contenu arrive (bonjour, CLS).
+ ========================================================================== */
+.skeleton-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-4);
+}
+
+.skeleton-card {
+  /* Mêmes dimensions qu'une carte de quête : la forme d'abord, jamais
+ une roue qui tourne. */
+  height: 180px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  animation: skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes skeleton-pulse {
+
+  /* Une respiration douce : assez visible pour dire « ça charge »,
+ assez discrète pour ne pas fatiguer l'œil. */
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.55;
+  }
+}
+
+/* TP2 · les lignes de la fiche : un titre, du texte, un bloc de faits. */
+.skeleton-line {
+  height: 1rem;
+  margin-bottom: var(--space-3);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface);
+  animation: skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+.skeleton-title {
+  width: 60%;
+  height: 2rem;
+}
+
+.skeleton-short {
+  width: 40%;
+}
