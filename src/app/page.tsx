@@ -1,68 +1,57 @@
-import Image from 'next/image';
+// =============================================================================
+// La page d'accueil : le tableau des quêtes, premier jet (TD3)
+// -----------------------------------------------------------------------------
+// C'est un Server Component (le défaut dans l'App Router) : la requête
+// part du serveur Next.js, le HTML arrive déjà rempli dans le navigateur.
+// Le pourquoi de ce choix occupe une bonne partie de la séance 2.
+// =============================================================================
+import { fetchQuests } from '@/features/quests/api';
+import type { Page, Quest } from '@/features/quests/types';
 import styles from './page.module.css';
 
-export default function Home() {
+// Pourquoi cette ligne ? Réponse en séance 2.
+export const dynamic = 'force-dynamic';
+
+export default async function HomePage() {
+  // Le tableau est public : pas de jeton nécessaire pour cette page.
+  // On isole l'appel réseau dans le try/catch, et l'on rend le JSX en
+  // dehors : la règle react-hooks/error-boundaries veille au grain.
+  let questsPage: Page<Quest> | null = null;
+  try {
+    questsPage = await fetchQuests({ limit: 20 });
+  } catch {
+    // API injoignable : un message qui aide, plutôt qu'un écran d'erreur brut.
+    questsPage = null;
+  }
+
+  if (!questsPage) {
+    return (
+      <section>
+        <h1>Le tableau des quêtes</h1>
+        <p>
+          L&apos;API de la Guilde ne répond pas. Vérifie qu&apos;elle tourne (
+          <code>docker compose up</code> dans le dossier de l&apos;API) et que
+          <code> NEXT_PUBLIC_API_URL</code> pointe au bon endroit dans ton fichier{' '}
+          <code>.env.local</code>.
+        </p>
+      </section>
+    );
+  }
+
+  const { data: quests, total } = questsPage;
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>
-            To get started, edit the <code className={styles.code}>page.tsx</code> file.
-          </h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{' '}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{' '}
-            or the{' '}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{' '}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <section>
+      <h1>Le tableau des quêtes</h1>
+      <p className={styles.subtitle}>
+        {total} quête{total > 1 ? 's' : ''} au tableau. À toi de jouer.
+      </p>
+      {/* Premier jet : les titres suffisent à prouver que l'API répond. */}
+      <ul>
+        {quests.map((quest) => (
+          <li key={quest.id}>{quest.title}</li>
+        ))}
+      </ul>
+    </section>
   );
 }
