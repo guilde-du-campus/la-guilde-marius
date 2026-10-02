@@ -28,5 +28,9 @@ export async function fetchQuests(filters: QuestFilters = {}): Promise<Page<Ques
     }
   }
   const query = params.size > 0 ? `?${params.toString()}` : '';
-  return apiFetch<Page<Quest>>(`/v1/quests${query}`);
+  return apiFetch<Page<Quest>>(`/v1/quests${query}`); // "/v1/quests" + query
+}
+
+export async function fetchQuest(id: string): Promise<Quest> {
+  return apiFetch<Quest>(`/v1/quests/${id}`);
 }
