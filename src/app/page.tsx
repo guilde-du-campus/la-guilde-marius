@@ -6,21 +6,37 @@
 // Le pourquoi de ce choix occupe une bonne partie de la séance 2.
 // =============================================================================
 import { fetchQuests } from '@/features/quests/api';
-import type { Page, Quest } from '@/features/quests/types';
+import {
+  QUEST_STATUS_LABELS,
+  type Page,
+  type Quest,
+  type QuestStatus,
+} from '@/features/quests/types';
 import styles from './page.module.css';
 import QuestList from '@/features/quests/components/quest-list';
+import QuestFilters from '@/features/quests/components/quest-filters';
 
 // Pourquoi cette ligne ? Réponse en séance 2.
-export const dynamic = 'force-dynamic';
-// export const revalidate = 30;
+// export const dynamic = 'force-dynamic';
+export const revalidate = 30;
 
-export default async function HomePage() {
+function parseStatus(value: string | undefined): QuestStatus | undefined {
+  return value && Object.hasOwn(QUEST_STATUS_LABELS, value) ? (value as QuestStatus) : undefined;
+}
+
+export default async function HomePage({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | undefined>>;
+}) {
+  const raw = await searchParams;
+  const status = parseStatus(raw.status);
   // Le tableau est public : pas de jeton nécessaire pour cette page.
   // On isole l'appel réseau dans le try/catch, et l'on rend le JSX en
   // dehors : la règle react-hooks/error-boundaries veille au grain.
   let questsPage: Page<Quest> | null = null;
   try {
-    questsPage = await fetchQuests({ limit: 20 });
+    questsPage = await fetchQuests({ limit: 20, status });
   } catch {
     // API injoignable : un message qui aide, plutôt qu'un écran d'erreur brut.
     questsPage = null;
@@ -48,6 +64,7 @@ export default async function HomePage() {
       <p className={styles.subtitle}>
         {total} quête{total > 1 ? 's' : ''} au tableau. À toi de jouer.
       </p>
+      <QuestFilters />
       {/* Premier jet : les titres suffisent à prouver que l'API répond. */}
       <QuestList quests={quests} />
     </section>
