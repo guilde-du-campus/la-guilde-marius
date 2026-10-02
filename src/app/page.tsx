@@ -8,6 +8,7 @@
 import { fetchQuests } from '@/features/quests/api';
 import type { Page, Quest } from '@/features/quests/types';
 import styles from './page.module.css';
+import QuestList from '@/features/quests/components/quest-list';
 
 // Pourquoi cette ligne ? Réponse en séance 2.
 export const dynamic = 'force-dynamic';
@@ -47,11 +48,7 @@ export default async function HomePage() {
         {total} quête{total > 1 ? 's' : ''} au tableau. À toi de jouer.
       </p>
       {/* Premier jet : les titres suffisent à prouver que l'API répond. */}
-      <ul>
-        {quests.map((quest) => (
-          <li key={quest.id}>{quest.title}</li>
-        ))}
-      </ul>
+      <QuestList quests={quests} />
     </section>
   );
 }
