@@ -1,0 +1,28 @@
+/* La pagination : sobre, lisible, désactivée sans ambiguïté. */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.link {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.link:hover,
+.link:focus-visible {
+  text-decoration: underline;
+}
+
+.disabled {
+  color: var(--color-text-muted);
+  opacity: 0.5;
+}
+
+.counter {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}

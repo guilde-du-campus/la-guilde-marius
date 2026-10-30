@@ -2,3 +2,13 @@
 .subtitle {
   color: var(--color-text-muted);
 }
+
+.empty {
+  margin-top: var(--space-5);
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.empty a {
+  color: var(--color-accent);
+}
