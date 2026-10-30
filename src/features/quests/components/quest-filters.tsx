@@ -90,7 +90,7 @@ export default function QuestFilters() {
 
       <button
         type="submit"
-        className="cursor-pointer rounded-sm border border-accent-strong px-[0.9rem] py-[0.45rem] text-[0.9rem] text-accent-strong hover:bg-accent-strong hover:text-surface focus-visible:bg-accent-strong focus-visible:text-surface"
+        className="cursor-pointer rounded-sm border border-accent-strong px-[0.9rem] py-[0.45rem] text-[0.9rem] text-accent-strong hover:bg-accent-strong hover:text-surface focus-visible:bg-accent-strong focus-visible:text-surface transition-all duration-300"
       >
         Chercher
       </button>
