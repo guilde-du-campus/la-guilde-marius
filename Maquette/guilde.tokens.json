@@ -1,0 +1,25 @@
+{
+  "$description": "La Guilde · maquette · collection « Guilde » (export des variables, format Design Tokens)",
+  "color": {
+    "background": { "$type": "color", "$value": "#F7F9FB", "$description": "Fond de page" },
+    "surface": { "$type": "color", "$value": "#FFFFFF", "$description": "Cartes, barre de filtres, formulaires" },
+    "border": { "$type": "color", "$value": "#D7DEE6", "$description": "Bordures des cartes et des champs" },
+    "text": { "$type": "color", "$value": "#0A192F", "$description": "Texte courant et titres" },
+    "text-muted": { "$type": "color", "$value": "#9CFFE9", "$description": "Texte secondaire : statut, auteur, phrase de compte" },
+    "accent": { "$type": "color", "$value": "#64FFDA", "$description": "Accents non textuels : bordures, badges, logo" },
+    "accent-strong": { "$type": "color", "$value": "#0B7A6B", "$description": "Liens, type de quête, récompense, bouton en contour" },
+    "navy": { "$type": "color", "$value": "#0A192F", "$description": "Fond de l'en-tête" },
+    "danger": { "$type": "color", "$value": "#B3261E", "$description": "Messages d'erreur" }
+  },
+  "radius": {
+    "sm": { "$type": "dimension", "$value": "6px" },
+    "md": { "$type": "dimension", "$value": "14px" }
+  },
+  "space": {
+    "1": { "$type": "dimension", "$value": "8px" },
+    "2": { "$type": "dimension", "$value": "12px" },
+    "3": { "$type": "dimension", "$value": "20px" },
+    "4": { "$type": "dimension", "$value": "28px" },
+    "5": { "$type": "dimension", "$value": "40px" }
+  }
+}
