@@ -29,6 +29,11 @@ body {
   padding: var(--space-4);
 }
 
+.site-logo {
+  font-weight: 700;
+  color: var(--color-accent-strong);
+}
+
 /* Les liens aux couleurs de la Guilde (la page 404, les retours au tableau). */
 a {
   color: var(--color-accent-strong);
