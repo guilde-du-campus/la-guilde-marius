@@ -3,7 +3,6 @@
 import { withParam } from '@/lib/search-params';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { QUEST_CATEGORY_LABELS, QUEST_STATUS_LABELS, QuestCategory, QuestStatus } from '../types';
-import styles from '../styles/quest-filters.module.css';
 
 const SORT_LABELS = {
   '-createdAt': "Plus récentes d'abord",
@@ -11,6 +10,8 @@ const SORT_LABELS = {
   '-reward': 'Récompense décroissante',
   reward: 'Récompense croissante',
 };
+
+const labelClasses = 'flex flex-col gap-1 text-[0.8rem] text-text-muted';
 
 export default function QuestFilters() {
   const router = useRouter();
@@ -25,7 +26,7 @@ export default function QuestFilters() {
 
   return (
     <form
-      className={styles.filters}
+      className="mt-(--space-3) flex flex-wrap items-end gap-(--space-2) rounded-md border border-border bg-surface p-(--space-2)"
       role="search"
       onSubmit={(event) => {
         event.preventDefault();
@@ -33,7 +34,7 @@ export default function QuestFilters() {
         apply('q', typeof q === 'string' ? q.trim() : '');
       }}
     >
-      <label className={styles.field}>
+      <label className={labelClasses}>
         <span>Statut</span>
         <select
           value={params.get('status') ?? ''}
@@ -48,7 +49,7 @@ export default function QuestFilters() {
         </select>
       </label>
 
-      <label className={styles.field}>
+      <label className={labelClasses}>
         <span>Catégorie</span>
         <select
           value={params.get('category') ?? ''}
@@ -63,7 +64,7 @@ export default function QuestFilters() {
         </select>
       </label>
 
-      <label className={styles.field}>
+      <label className={labelClasses}>
         <span>Tri</span>
         <select
           value={params.get('sort') ?? '-createdAt'}
@@ -77,7 +78,7 @@ export default function QuestFilters() {
         </select>
       </label>
 
-      <label className={styles.field}>
+      <label className={labelClasses}>
         <span>Recherche</span>
         <input
           type="search"
@@ -87,7 +88,10 @@ export default function QuestFilters() {
         />
       </label>
 
-      <button type="submit" className={styles.submit}>
+      <button
+        type="submit"
+        className="cursor-pointer rounded-sm border border-accent-strong px-[0.9rem] py-[0.45rem] text-[0.9rem] text-accent-strong hover:bg-accent-strong hover:text-surface focus-visible:bg-accent-strong focus-visible:text-surface"
+      >
         Chercher
       </button>
     </form>

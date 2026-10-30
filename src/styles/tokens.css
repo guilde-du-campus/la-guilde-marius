@@ -6,25 +6,29 @@
  la maquette Figma : le fichier change, les composants ne bougent pas.
  C'est exactement le rôle d'un design token.
  ============================================================================= */
+
 :root {
-  /* Couleurs (palette provisoire, remplacée par les tokens Figma) */
-  --color-background: #F7F9FB;
-  --color-surface: #FFFFFF;
-  --color-border: #D7DEE6;
-  --color-text: #0A192F;
-  --color-text-muted: #4A5568;
-  --color-accent: #64FFDA;
-  --color-accent-strong: #0b7a6b;
-  ;
-  --color-navy: #0A192F;
-  --color-danger: #B3261E;
-  /* Rayons */
-  --radius-sm: 6px;
-  --radius-md: 14px;
-  /* Espacements */
-  --space-1: 8px;
-  --space-2: 12px;
-  --space-3: 20px;
-  --space-4: 28px;
-  --space-5: 40px;
+  @theme static {
+    /* Couleurs (palette provisoire, remplacée par les tokens Figma) */
+    --color-background: #F7F9FB;
+    --color-surface: #FFFFFF;
+    --color-border: #D7DEE6;
+    --color-text: #0A192F;
+    --color-text-muted: #4A5568;
+    --color-accent: #64FFDA;
+    --color-accent-strong: #0b7a6b;
+
+    --color-navy: #0A192F;
+    --color-on-navy: #F0F0F0;
+    --color-danger: #B3261E;
+    /* Rayons */
+    --radius-sm: 6px;
+    --radius-md: 14px;
+    /* Espacements */
+    --space-1: 8px;
+    --space-2: 12px;
+    --space-3: 20px;
+    --space-4: 28px;
+    --space-5: 40px;
+  }
 }

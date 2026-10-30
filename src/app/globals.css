@@ -1,3 +1,30 @@
+@import 'tailwindcss';
+@import '../styles/tokens.css';
+
+@layer base {
+  h1 {
+    margin-block: 0.67em;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.25;
+  }
+
+  h2,
+  h3 {
+    font-weight: 700;
+  }
+
+  p,
+  dl {
+    margin-block: 1em;
+  }
+
+  a {
+    color: var(--color-accent-strong);
+    text-decoration: underline;
+  }
+}
+
 /* Styles globaux : le strict minimum, le reste vit dans les composants. */
 
 * {
@@ -23,18 +50,13 @@ body {
   outline-offset: 2px;
 }
 
-.site-main {
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: var(--space-4);
-}
-
 .site-logo {
   font-weight: 700;
   color: var(--color-accent-strong);
 }
 
-/* Les liens aux couleurs de la Guilde (la page 404, les retours au tableau). */
-a {
-  color: var(--color-accent-strong);
+.site-main {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: var(--space-4);
 }
