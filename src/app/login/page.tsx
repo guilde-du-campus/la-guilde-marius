@@ -38,8 +38,7 @@ function LoginForm() {
     <section className="mx-auto max-w-105">
       <h1>Se connecter à la Guilde</h1>
       <form
-        className="flex flex-col gap-(--space-3) rounded-md border border-border bg-
-surface p-(--space-4)"
+        className="flex flex-col gap-(--space-3) rounded-md border border-border bg-surface p-(--space-4)"
         onSubmit={handleSubmit}
         noValidate={false}
       >
@@ -52,8 +51,7 @@ surface p-(--space-4)"
         <label className="flex flex-col gap-[0.3rem]">
           <span className="text-[0.9rem] text-text-muted">Email</span>
           <input
-            className="rounded-sm border border-border bg-background px-[0.7rem] py-
-[0.55rem] text-text"
+            className="rounded-sm border border-border bg-background px-[0.7rem] py-[0.55rem] text-text"
             type="email"
             name="email"
             value="lancelot@guilde.local"
@@ -64,8 +62,7 @@ surface p-(--space-4)"
         <label className="flex flex-col gap-[0.3rem]">
           <span className="text-[0.9rem] text-text-muted">Mot de passe</span>
           <input
-            className="rounded-sm border border-border bg-background px-[0.7rem] py-
-[0.55rem] text-text"
+            className="rounded-sm border border-border bg-background px-[0.7rem] py-[0.55rem] text-text"
             type="password"
             name="password"
             autoComplete="current-password"
@@ -77,8 +74,7 @@ surface p-(--space-4)"
         {/* Désactivé PENDANT l'envoi seulement : un bouton grisé n'explique
             rien, une erreur si. */}
         <button
-          className="cursor-pointer rounded-sm bg-accent-strong p-[0.6rem] font-semibold 
-text-surface disabled:cursor-wait disabled:opacity-60"
+          className="cursor-pointer rounded-sm bg-accent-strong p-[0.6rem] font-semibold text-surface disabled:cursor-wait disabled:opacity-60"
           type="submit"
           disabled={submitting}
         >
