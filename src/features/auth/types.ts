@@ -42,6 +42,12 @@ export interface PrivateAdventurer extends PublicAdventurer {
   role: Role;
 }
 
+export interface TokenPair {
+  accessToken: string;
+  refreshToken: string;
+  adventurer: PrivateAdventurer;
+}
+
 export const ROLE_LABELS: Record<Role, string> = {
   MEMBER: 'Membre',
   GUILD_MASTER: 'Maître de guilde',
