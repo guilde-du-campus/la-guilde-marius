@@ -6,6 +6,8 @@ import './globals.css';
 import { AuthProvider } from '@/features/auth/auth-provider';
 import { SiteHeader } from '@/components/site-header';
 import { QueryProvider } from './providers';
+import { ToastProvider } from '@/features/toasts/toaster';
+import { RealtimeToasts } from '@/features/realtime/realtime-toasts';
 
 export const metadata: Metadata = {
   title: 'La Guilde',
@@ -18,8 +20,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <QueryProvider>
           <AuthProvider>
-            <SiteHeader />
-            <main className="site-main">{children}</main>
+            <ToastProvider>
+              <SiteHeader />
+              <main className="site-main">{children}</main>
+              <RealtimeToasts />
+            </ToastProvider>
           </AuthProvider>
         </QueryProvider>
       </body>
