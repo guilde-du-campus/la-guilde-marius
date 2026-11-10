@@ -1,8 +1,7 @@
 'use client';
 
-import { useRouter } from 'next/router';
+import { usePathname, useRouter } from 'next/navigation';
 import { useAuth } from './auth-provider';
-import { usePathname } from 'next/navigation';
 import { useEffect } from 'react';
 
 export function RequireAuth({ children }: { children: React.ReactNode }) {
