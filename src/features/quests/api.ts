@@ -6,7 +6,7 @@
 // fetch, il appelle une fonction métier nommée.
 // =============================================================================
 import { apiFetch } from '@/lib/api';
-import type { Page, Quest, QuestCategory, QuestStatus, QuestType } from './types';
+import type { NewQuest, Page, Quest, QuestCategory, QuestStatus, QuestType } from './types';
 // Les filtres du tableau, calqués sur les paramètres du contrat.
 export interface QuestFilters {
   page?: number;
@@ -33,4 +33,11 @@ export async function fetchQuests(filters: QuestFilters = {}): Promise<Page<Ques
 
 export async function fetchQuest(id: string): Promise<Quest> {
   return apiFetch<Quest>(`/v1/quests/${id}`);
+}
+
+export async function createQuest(draft: NewQuest): Promise<Quest> {
+  return apiFetch<Quest>(`/v1/quests`, {
+    method: 'POST',
+    body: JSON.stringify(draft),
+  });
 }

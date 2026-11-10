@@ -1,5 +1,3 @@
-import { DO_NOT_USE_OR_YOU_WILL_BE_FIRED_EXPERIMENTAL_FORM_ACTIONS } from 'react';
-
 export type QuestType = 'HELP' | 'BARTER';
 
 export type QuestCategory = 'DEV' | 'DESIGN' | 'COURSES' | 'MATERIAL' | 'STUDENT_LIFE' | 'OTHER';
@@ -28,6 +26,15 @@ export interface Quest {
   takenAt: string | null;
   completedAt: string | null;
   validatedAt: string | null;
+}
+
+export interface NewQuest {
+  title: string;
+  description: string;
+  type: QuestType;
+  category: QuestCategory;
+  reward: number;
+  photoUrl?: string;
 }
 
 export interface Page<T> {

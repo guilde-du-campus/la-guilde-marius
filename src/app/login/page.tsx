@@ -54,7 +54,7 @@ function LoginForm() {
             className="rounded-sm border border-border bg-background px-[0.7rem] py-[0.55rem] text-text"
             type="email"
             name="email"
-            value="lancelot@guilde.local"
+            value="maitre@guilde.local"
             autoComplete="email"
             required
           />
