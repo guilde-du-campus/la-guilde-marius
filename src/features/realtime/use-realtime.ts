@@ -5,7 +5,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import { useEffect, useRef } from 'react';
 
 export interface RealtimeEvent {
-  event: 'quest.taken' | 'quest.completed' | 'quest.validated' | 'quest.awarded';
+  event: 'quest.taken' | 'quest.completed' | 'quest.validated' | 'badge.awarded';
   date: string;
   data: Record<string, unknown>;
 }

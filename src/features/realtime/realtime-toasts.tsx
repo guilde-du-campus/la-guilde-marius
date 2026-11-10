@@ -31,6 +31,11 @@ interface QuestValidatedData {
   xpEarned: number;
 }
 
+interface BadgeAwardedData {
+  badgeCode: string;
+  name: string;
+}
+
 function messageFor(event: RealtimeEvent): string {
   switch (event.event) {
     case 'quest.taken': {
@@ -45,8 +50,10 @@ function messageFor(event: RealtimeEvent): string {
       const data = event.data as unknown as QuestValidatedData;
       return `Quête validée : +${data.pointsEarned} points, +${data.xpEarned} XP !`;
     }
-    default:
-      return '';
+    case 'badge.awarded': {
+      const data = event.data as unknown as BadgeAwardedData;
+      return `Badge obtenu : ${data.name}`;
+    }
   }
 }
 
@@ -59,9 +66,8 @@ function ConnectedRealtime() {
     toast(messageFor(event));
     // Les vues serveur (tableau, fiches) relisent l'état réel ; le profil
     // aussi quand des points ou de l'XP viennent de tomber.
-    // TODO BADGE
     router.refresh();
-    if (event.event === 'quest.validated') {
+    if (event.event === 'quest.validated' || event.event === 'badge.awarded') {
       void refreshProfile();
     }
   });
