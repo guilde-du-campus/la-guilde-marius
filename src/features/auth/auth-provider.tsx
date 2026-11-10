@@ -32,6 +32,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             setAdventurer(me);
             setStatus('authenticated');
           }
+          return;
         } catch {
           // fetchMe a échouer, on supprime la session
           clearSession();
