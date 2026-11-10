@@ -56,6 +56,7 @@ surface p-(--space-4)"
 [0.55rem] text-text"
             type="email"
             name="email"
+            value="lancelot@guilde.local"
             autoComplete="email"
             required
           />
@@ -68,6 +69,7 @@ surface p-(--space-4)"
             type="password"
             name="password"
             autoComplete="current-password"
+            value="guilde-demo-2026!"
             required
             minLength={12}
           />
