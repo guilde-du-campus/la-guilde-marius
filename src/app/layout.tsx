@@ -4,6 +4,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { AuthProvider } from '@/features/auth/auth-provider';
+import { SiteHeader } from '@/components/site-header';
 
 export const metadata: Metadata = {
   title: 'La Guilde',
@@ -15,10 +16,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="fr">
       <body>
         <AuthProvider>
-          <header className="site-header">
-            <span className="site-logo"> La Guilde</span> ⚔️
-            <nav>{/* La navigation arrive avec les pages (séance 2). */}</nav>
-          </header>
+          <SiteHeader />
           <main className="site-main">{children}</main>
         </AuthProvider>
       </body>

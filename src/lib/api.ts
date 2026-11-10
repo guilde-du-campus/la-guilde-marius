@@ -67,7 +67,7 @@ export function clearSession() {
 // Empêche d'appeler en double le rafraichissement de token d'accès
 let refreshInFlight: Promise<boolean> | null = null;
 
-export function tryRefresh(): Promise<boolean> {
+export function tryRefresh(): Promise<boolean> | null {
   if (refreshInFlight) {
     return refreshInFlight;
   }
@@ -81,6 +81,11 @@ export function tryRefresh(): Promise<boolean> {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ refreshToken }),
       });
+      // Refresh token expiré ou révoqué : on ne stocke pas une réponse d'erreur
+      if (!response.ok) {
+        clearSession();
+        return false;
+      }
       const tokens = (await response.json()) as { accessToken: string; refreshToken: string };
       setAccessToken(tokens.accessToken);
       storeRefreshToken(tokens.refreshToken);

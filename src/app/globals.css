@@ -50,11 +50,6 @@ body {
   outline-offset: 2px;
 }
 
-.site-logo {
-  font-weight: 700;
-  color: var(--color-accent-strong);
-}
-
 .site-main {
   max-width: 1080px;
   margin: 0 auto;
