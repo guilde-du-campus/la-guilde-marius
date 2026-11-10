@@ -41,3 +41,23 @@ export async function createQuest(draft: NewQuest): Promise<Quest> {
     body: JSON.stringify(draft),
   });
 }
+
+export function takeQuest(id: string): Promise<Quest> {
+  return apiFetch<Quest>(`/v1/quests/${id}/take`, { method: 'POST' });
+}
+
+export function abandonQuest(id: string): Promise<Quest> {
+  return apiFetch<Quest>(`/v1/quests/${id}/abandon`, { method: 'POST' });
+}
+
+export function completeQuest(id: string): Promise<Quest> {
+  return apiFetch<Quest>(`/v1/quests/${id}/complete`, { method: 'POST' });
+}
+
+export function validateQuest(id: string): Promise<Quest> {
+  return apiFetch<Quest>(`/v1/quests/${id}/validate`, { method: 'POST' });
+}
+
+export function cancelQuest(id: string): Promise<Quest> {
+  return apiFetch<Quest>(`/v1/quests/${id}/cancel`, { method: 'POST' });
+}

@@ -16,6 +16,7 @@ import {
   QUEST_TYPE_LABELS,
 } from '@/features/quests/types';
 import styles from './page.module.css';
+import { QuestActions } from '@/features/quests/components/quest-actions';
 
 // TP2 · une quête change de statut plus souvent que le tableau ne bouge :
 // dix secondes de fraîcheur, pas plus. Le choix se justifie dans la PR.
@@ -70,6 +71,8 @@ export default async function QuestPage({ params }: { params: Promise<{ id: stri
         </div>
       )}
       <p className={styles.description}>{quest.description}</p>
+
+      <QuestActions quest={quest} />
 
       <dl className={styles.facts}>
         <dt>Catégorie</dt>

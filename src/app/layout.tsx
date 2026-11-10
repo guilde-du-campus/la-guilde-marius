@@ -5,6 +5,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { AuthProvider } from '@/features/auth/auth-provider';
 import { SiteHeader } from '@/components/site-header';
+import { QueryProvider } from './providers';
 
 export const metadata: Metadata = {
   title: 'La Guilde',
@@ -15,10 +16,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="fr">
       <body>
-        <AuthProvider>
-          <SiteHeader />
-          <main className="site-main">{children}</main>
-        </AuthProvider>
+        <QueryProvider>
+          <AuthProvider>
+            <SiteHeader />
+            <main className="site-main">{children}</main>
+          </AuthProvider>
+        </QueryProvider>
       </body>
     </html>
   );
